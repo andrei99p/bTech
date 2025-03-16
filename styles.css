@@ -1,0 +1,157 @@
+:root {
+    --primary-color: #181818;
+    --secondary-color: #f35d17;
+}
+
+html{
+  scroll-behavior: smooth;
+  font-family: 'Josefin Sans' !important;
+  color: white;
+  text-align: center;
+  overflow-y: scroll;
+  scroll-snap-type: y proximity !important;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url(resources/JosefinSansRegular-x3LYV.ttf);
+}
+@font-face {
+  font-family: 'Josefin Sans Bold';
+  src: url(resources/JosefinSansBold-OVA7o.ttf);
+}
+
+body {
+  padding: min(50px, 7%);
+    background-color: var(--primary-color) !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+p{
+  font-size: clamp(1rem, calc(0.5vw + 1rem), 2rem) !important;
+  text-align: justify;
+  color: white;
+  font-family: 'Josefin Sans';
+  max-width: 600px;
+  width: 90%; /* Ensures responsiveness on smaller screens */
+  margin: 0 auto; /* Centers the text horizontally */
+}
+
+h1{
+  font-family: 'Josefin Sans Bold';
+  color: white !important;
+  font-size: clamp(1.4rem, calc(2vw + 1rem), 8rem) !important;
+}
+
+.block{
+  margin: 45vh auto !important;
+  scroll-snap-align: center !important;
+}
+
+img{
+  max-width: 100%;
+  height: 50px;
+  aspect-ratio: 16/9;
+  object-fit: contain;
+}
+
+button {
+padding: 1em 2em;
+background-color: var(--primary-color);
+border: none;
+color: #f0f0f0;
+border-radius: 1000px !important;
+font-family: 'Josefin Sans';
+position: relative;
+
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+button::after{
+  content: '';
+  position: absolute;
+  height: 107%;
+  width: 103%;
+  border-radius: 1000px;
+  background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
+  z-index: -1;
+}
+
+button:hover {
+ z-index: 0;
+ box-shadow: 0 0 10px var(--secondary-color),0 0 10px var(--primary-color);
+}
+
+.button svg {
+  margin-left: 8px;
+}
+
+nav{
+  position: fixed !important; 
+  top: 0 !important; 
+  width: 100%;
+  overflow: hidden;
+}
+
+#scroll-arrow {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatArrow 1.5s infinite ease-in-out;
+  transition: opacity 0.5s ease;
+  display: block;
+}
+
+.arrow-img {
+  width: 40px; /* Adjust size as needed */
+  height: auto;
+}
+
+@keyframes floatArrow {
+  0% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+  100% { transform: translateX(-50%) translateY(0); }
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, filter 1s ease-out, transform 1s ease-out;
+}
+
+@media (prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, filter 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.fade-in.exiting {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px); /* Subtle movement downwards */
+  transition: opacity 1s ease-out, filter 1s ease-out, transform 1s ease-out;
+}
+
+.fade-scroll, .fade-scroll h1, .fade-scroll p, .fade-scroll span {
+  transition: opacity 0.5s ease-out;
+}
