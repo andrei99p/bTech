@@ -16,8 +16,6 @@
         <button style="margin-right: 5%;">Contact</button>      
     </nav>  
 
-    <div class="scroll-container">
-
         <section class="block fade-scroll">
             <h1><span style="color: var(--secondary-color);">Your</span> ideas made real</h1>
         </section>
@@ -38,10 +36,7 @@
                 From web and mobile apps to AI-driven solutions and enterprise software, we create scalable, intuitive, and high-performance products that drive success.
             </p>
           </section>
-
-    </div>
       
-
     <div id="scroll-arrow">
         <img src="resources/down-arrow.png" class="arrow-img"  alt="www.flaticon.com" draggable="false"> <!-- Down Arrow (↓) -->
     </div>
@@ -86,6 +81,9 @@
             });
         });
     });
+
+    // Trigger scroll event on page load
+    $(document).trigger('scroll');
 });
 
     </script>
