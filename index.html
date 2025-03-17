@@ -44,10 +44,10 @@
     <section id="Contact" class="block fade-scroll">
         <h2 >Contact us</h2>
         <form action="https://formsubmit.co/38ee4712aa8bd6da97d8f9b579bf18a7" method="POST"> 
-            <input name="name" type="text" class="feedback-input" placeholder="Name" />   
-            <input name="email" type="email" class="feedback-input" placeholder="Email" />
-            <input name="tel" type="tel" class="feedback-input" placeholder="Phone" />
-            <textarea name="text" class="feedback-input" placeholder="Message" maxlength="300"></textarea>
+            <input name="name" type="text" class="feedback-input" placeholder="Name" required/>   
+            <input name="email" type="email" class="feedback-input" placeholder="Email" required/>
+            <input name="tel" type="tel" class="feedback-input" placeholder="Phone" pattern="^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"/>
+            <textarea name="text" class="feedback-input" placeholder="Message" maxlength="300" required></textarea>
             <button type="submit" class="btn btn-primary" type="submit"> &nbsp&nbsp Send &nbsp&nbsp</button>
       </form>
     </section>

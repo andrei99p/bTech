@@ -25,7 +25,10 @@ html{
 
 body {
   padding: min(50px, 7%);
-    background-color: var(--primary-color) !important;
+    background-image: url(resources/bg3.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 a {
