@@ -10,10 +10,10 @@
     <script src="scripts.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-dark"> 
+    <nav class="navbar navbar-dark d-flex justify-content-between align-items-center px-3"> 
         <img src="resources/Logo_noText_png.png" height="50" alt="" style="margin-left: 2%" draggable="false">
         
-        <button style="margin-right: 5%;">Contact</button>      
+        <button class="btn btn-primary" style="margin-right: 5%;"><a href="#Contact">Contact</a></button>      
     </nav>  
 
         <section class="block fade-scroll">
@@ -41,6 +41,18 @@
         <img src="resources/down-arrow.png" class="arrow-img"  alt="www.flaticon.com" draggable="false"> <!-- Down Arrow (↓) -->
     </div>
     
+    <section id="Contact" class="block">
+        <h2 class="fade-scroll">Contact us</h2>
+        <form action="https://formsubmit.co/el/fuhotu" method="POST"> 
+            <input name="name" type="text" class="feedback-input fade-scroll" placeholder="Name" />   
+            <input name="email" type="email" class="feedback-input fade-scroll" placeholder="Email" />
+            <input name="tel" type="tel" class="feedback-input fade-scroll" placeholder="Phone" />
+            <textarea name="text" class="feedback-input fade-scroll" placeholder="Message" maxlength="300"></textarea>
+            <button type="submit" class="btn btn-primary fade-scroll" type="submit">Send</button>
+      </form>
+    </section>
+    
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script type="text/Javascript">

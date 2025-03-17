@@ -1,6 +1,8 @@
 :root {
-    --primary-color: #181818;
+    --primary-color: #272727;
     --secondary-color: #f35d17;
+    --success-color: #5cb85c;
+    --error-color: #ff3333;
 }
 
 html{
@@ -9,6 +11,7 @@ html{
   color: white;
   text-align: center;
   overflow-y: scroll;
+  scroll-snap-type: y proximity !important;
 }
 
 @font-face {
@@ -27,6 +30,7 @@ body {
 
 a {
   text-decoration: none !important;
+  color: white !important;
 }
 
 p{
@@ -39,10 +43,17 @@ p{
   margin: 0 auto; /* Centers the text horizontally */
 }
 
-h1{
+h1, h2{
   font-family: 'Josefin Sans Bold';
   color: white !important;
+}
+
+h1{
   font-size: clamp(1.4rem, calc(2vw + 1rem), 8rem) !important;
+}
+
+h2{
+  font-size: clamp(1.2rem, calc(1.8vw + 1rem), 4rem) !important;
 }
 
 .block{
@@ -57,39 +68,40 @@ img{
   object-fit: contain;
 }
 
-button {
-padding: 1em 2em;
-background-color: var(--primary-color);
-border: none;
-color: #f0f0f0;
-border-radius: 1000px !important;
-font-family: 'Josefin Sans';
-position: relative;
+/*
+.button {
+    padding: 0.5em 1em;
+    background-color: var(--primary-color);
+    border: none;
+    color: #f0f0f0;
+    border-radius: 1000px !important;
+    font-family: 'Josefin Sans';
+    position: relative;
 
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-button::after{
-  content: '';
-  position: absolute;
-  height: 107%;
-  width: 103%;
-  border-radius: 1000px;
-  background-image: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
-  z-index: -1;
+.button::after {
+    content: '';
+    position: absolute;
+    height: 107%;
+    width: 103%;
+    border-radius: 1000px;
+    background-image: linear-gradient(to top left, var(--primary-color), var(--secondary-color));
+    z-index: -1;
 }
 
-button:hover {
- z-index: 0;
- box-shadow: 0 0 10px var(--secondary-color),0 0 10px var(--primary-color);
+.button:hover {
+    z-index: 0;
+    box-shadow: 0 0 10px var(--secondary-color), 0 0 10px var(--primary-color);
 }
 
 .button svg {
   margin-left: 8px;
 }
-
+*/
 nav{
   position: fixed !important; 
   top: 0 !important; 
@@ -117,7 +129,12 @@ nav{
   50% { transform: translateX(-50%) translateY(-10px); }
   100% { transform: translateX(-50%) translateY(0); }
 }
-
+@media (max-width: 768px) {
+  .hidden {
+    filter: blur(5px);
+    transform: translateY(30px);
+  }
+}
 .hidden {
   opacity: 0;
   filter: blur(10px);
@@ -162,4 +179,65 @@ nav{
 
  .fade-scroll h1, .fade-scroll p, .fade-scroll span {
   transition: opacity 0.5s ease-out;
+}
+
+.btn.btn-primary {
+	font-weight: bold;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  padding: 0 3rem;
+  border: 0;
+  border-radius: 3rem;
+  background-image: linear-gradient(131deg, #ff923c, #cc5500, #cc5500, #cc5500);
+  background-size: 300% 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn.btn-primary:hover:enabled {
+  box-shadow: 0 0.5em 0.5em -0.4em #cc5500ba;
+  background-size: 100% 100%;
+  transform: translateY(-0.15em);
+}
+
+form {
+  width: 90%;
+  max-width: clamp(320px, 90%, 420px);
+  margin: min(50px, 10%) auto;
+}
+
+.feedback-input {
+  font-family: 'Josefin Sans';
+  color:white;
+  border-radius: 15px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid var(--secondary-color);
+  transition: all 1s;
+  padding: 1em;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.feedback-input:invalid, .feedback-input:valid:not(:placeholder-shown){
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px);
+}
+
+.feedback-input:not(:focus-within):invalid:not(:placeholder-shown) {
+
+  background-image: url(resources/check-error.png);
+}
+
+.feedback-input:not(:focus-within):valid:not(:placeholder-shown) {
+
+  background-image: url(resources/check-success.png);
+}
+
+textarea {
+  height: clamp(10px, 15vh, 200px);
+  line-height: 150%;
+  resize:none !important;
 }
