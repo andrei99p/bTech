@@ -10,7 +10,7 @@
     <script src="scripts.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-dark d-flex justify-content-between align-items-center px-3"> 
+    <nav class="navbar navbar-dark fixed-top d-flex justify-content-between align-items-center px-3"> 
         <img src="resources/Logo_noText_png.png" height="50" alt="" style="margin-left: 2%" draggable="false">
         
         <button class="btn btn-primary" style="margin-right: 5%;"><a href="#Contact">Contact</a></button>      
@@ -59,7 +59,8 @@
         $(function() {
             var documentEl = $(document),
                 fadeElem = $('.fade-scroll'),
-                threshold = $(window).height() / 2, // half the viewport height
+                // Increase threshold for better mobile visibility
+                threshold = $(window).height() * 0.75, // 75% of viewport height
                 maxBlur = 10;    // maximum blur in pixels
         
             documentEl.on('scroll', function() {
@@ -76,11 +77,12 @@
                     // Calculate distance from element's middle to viewport's middle
                     var distance = Math.abs(viewportMiddle - elementMiddle);
                     
-                    // Calculate opacity based on distance from middle
+                    // Make elements become fully visible sooner
                     var opacity = 1 - (distance / threshold);
-                    opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
+                    // Add extra buffer to ensure full visibility
+                    opacity = Math.max(0, Math.min(1, opacity * 1.2)); 
         
-                    // Calculate blur
+                    // Calculate blur with reduced effect
                     var blurVal = (1 - opacity) * maxBlur;
         
                     $this.css({
