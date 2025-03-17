@@ -43,12 +43,12 @@
     
     <section id="Contact" class="block fade-scroll">
         <h2 >Contact us</h2>
-        <form action="https://formsubmit.co/el/fuhotu" method="POST"> 
+        <form action="https://formsubmit.co/38ee4712aa8bd6da97d8f9b579bf18a7" method="POST"> 
             <input name="name" type="text" class="feedback-input" placeholder="Name" />   
             <input name="email" type="email" class="feedback-input" placeholder="Email" />
             <input name="tel" type="tel" class="feedback-input" placeholder="Phone" />
             <textarea name="text" class="feedback-input" placeholder="Message" maxlength="300"></textarea>
-            <button type="submit" class="btn btn-primary" type="submit">Send</button>
+            <button type="submit" class="btn btn-primary" type="submit"> &nbsp&nbsp Send &nbsp&nbsp</button>
       </form>
     </section>
     
@@ -57,48 +57,43 @@
 
     <script type="text/Javascript">
         $(function() {
-    var documentEl = $(document),
-        fadeElem = $('.fade-scroll'),
-        threshold = 200, // distance from viewport edge to start fading
-        maxBlur = 10;    // maximum blur in pixels
-
-    documentEl.on('scroll', function() {
-        var currScrollPos = documentEl.scrollTop(),
-            windowHeight = $(window).height();
-
-        fadeElem.each(function() {
-            var $this = $(this),
-                elemOffsetTop = $this.offset().top,
-                elemHeight = $this.outerHeight();
-
-            // Distance from the top of the viewport
-            var distanceTop = elemOffsetTop - currScrollPos;
-            // Distance from the bottom of the viewport
-            var distanceBottom = (currScrollPos + windowHeight) - (elemOffsetTop + elemHeight);
-
-            // Fade factor based on distance from the viewport edges
-            var fadeTop = distanceTop < threshold ? distanceTop / threshold : 1;
-            var fadeBottom = distanceBottom < threshold ? distanceBottom / threshold : 1;
-
-            // Use the smaller of the two factors
-            var opacity = Math.min(fadeTop, fadeBottom);
-            opacity = Math.max(0, Math.min(1, opacity)); // Ensure opacity stays within [0, 1]
-
-            // Calculate the blur: fully blurred at 0 opacity, no blur at full opacity
-            var blurVal = (1 - opacity) * maxBlur;
-
-            $this.css({
-                opacity: opacity,
-                filter: 'blur(' + blurVal + 'px)'
+            var documentEl = $(document),
+                fadeElem = $('.fade-scroll'),
+                threshold = $(window).height() / 2, // half the viewport height
+                maxBlur = 10;    // maximum blur in pixels
+        
+            documentEl.on('scroll', function() {
+                var currScrollPos = documentEl.scrollTop(),
+                    windowHeight = $(window).height();
+        
+                fadeElem.each(function() {
+                    var $this = $(this),
+                        elemOffsetTop = $this.offset().top,
+                        elemHeight = $this.outerHeight(),
+                        elementMiddle = elemOffsetTop + (elemHeight / 2),
+                        viewportMiddle = currScrollPos + (windowHeight / 2);
+        
+                    // Calculate distance from element's middle to viewport's middle
+                    var distance = Math.abs(viewportMiddle - elementMiddle);
+                    
+                    // Calculate opacity based on distance from middle
+                    var opacity = 1 - (distance / threshold);
+                    opacity = Math.max(0, Math.min(1, opacity)); // Clamp between 0 and 1
+        
+                    // Calculate blur
+                    var blurVal = (1 - opacity) * maxBlur;
+        
+                    $this.css({
+                        opacity: opacity,
+                        filter: 'blur(' + blurVal + 'px)'
+                    });
+                });
             });
+        
+            // Trigger scroll event on page load
+            $(document).trigger('scroll');
         });
-    });
-
-    // Trigger scroll event on page load
-    $(document).trigger('scroll');
-});
-
-    </script>
+        </script>
 
 </body>
 </html>
