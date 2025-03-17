@@ -56,10 +56,16 @@ h2{
   font-size: clamp(1.2rem, calc(1.8vw + 1rem), 4rem) !important;
 }
 
-.block{
-  margin: 45vh auto !important;
+.block {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto !important;
   scroll-snap-align: center !important;
 }
+
 
 img{
   max-width: 100%;
@@ -68,40 +74,6 @@ img{
   object-fit: contain;
 }
 
-/*
-.button {
-    padding: 0.5em 1em;
-    background-color: var(--primary-color);
-    border: none;
-    color: #f0f0f0;
-    border-radius: 1000px !important;
-    font-family: 'Josefin Sans';
-    position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.button::after {
-    content: '';
-    position: absolute;
-    height: 107%;
-    width: 103%;
-    border-radius: 1000px;
-    background-image: linear-gradient(to top left, var(--primary-color), var(--secondary-color));
-    z-index: -1;
-}
-
-.button:hover {
-    z-index: 0;
-    box-shadow: 0 0 10px var(--secondary-color), 0 0 10px var(--primary-color);
-}
-
-.button svg {
-  margin-left: 8px;
-}
-*/
 nav{
   position: fixed !important; 
   top: 0 !important; 
