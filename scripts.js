@@ -44,4 +44,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   elements.forEach((el) => observer.observe(el));
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const img = new Image();
+    img.src = 'resources/bg3.jpg';
+    img.onload = function() {
+        document.body.classList.add('loaded');
+    };
+});
   
