@@ -47,16 +47,17 @@ p{
 }
 
 h1, h2{
-  font-family: 'Josefin Sans Bold';
   color: white !important;
 }
 
 h1{
   font-size: clamp(1.4rem, calc(2vw + 1rem), 8rem) !important;
+  font-family: 'Josefin Sans Bold' !important;
 }
 
 h2{
   font-size: clamp(1.2rem, calc(1.8vw + 1rem), 4rem) !important;
+  font-family: 'Josefin Sans' !important;
 }
 
 .block {
