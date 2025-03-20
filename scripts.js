@@ -52,4 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('loaded');
     };
 });
-  
+
+document.addEventListener('DOMContentLoaded', function() {
+    const button = document.getElementById('contactBtn');
+    const section = document.getElementById('Contact');
+
+    button.addEventListener('click', function() {
+      section.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
