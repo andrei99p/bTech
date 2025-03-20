@@ -61,3 +61,43 @@ document.addEventListener('DOMContentLoaded', function() {
       section.scrollIntoView({ behavior: 'smooth' });
     });
   });
+
+  $(function() {
+    var documentEl = $(document),
+        fadeElem = $('.fade-scroll'),
+        // Increase threshold for better mobile visibility
+        threshold = $(window).height() * 0.75, // 75% of viewport height
+        maxBlur = 10;    // maximum blur in pixels
+
+    documentEl.on('scroll', function() {
+        var currScrollPos = documentEl.scrollTop(),
+            windowHeight = $(window).height();
+
+        fadeElem.each(function() {
+            var $this = $(this),
+                elemOffsetTop = $this.offset().top,
+                elemHeight = $this.outerHeight(),
+                elementMiddle = elemOffsetTop + (elemHeight / 2),
+                viewportMiddle = currScrollPos + (windowHeight / 2);
+
+            // Calculate distance from element's middle to viewport's middle
+            var distance = Math.abs(viewportMiddle - elementMiddle);
+            
+            // Make elements become fully visible sooner
+            var opacity = 1 - (distance / threshold);
+            // Add extra buffer to ensure full visibility
+            opacity = Math.max(0, Math.min(1, opacity * 1.2)); 
+
+            // Calculate blur with reduced effect
+            var blurVal = (1 - opacity) * maxBlur;
+
+            $this.css({
+                opacity: opacity,
+                filter: 'blur(' + blurVal + 'px)'
+            });
+        });
+    });
+
+    // Trigger scroll event on page load
+    $(document).trigger('scroll');
+});
