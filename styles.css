@@ -625,11 +625,11 @@ body.light-mode {
 
         /* Add these new theme-specific styles */
         body.light-mode .parallax-background.about {
-            background-image: url('res/work_dark.png');
+            background-image: url('res/work_dark_mode.png');
         }
 
         body.dark-mode .parallax-background.about {
-            background-image: url('res/work_light.png');
+            background-image: url('res/work_light_mode.png');
         }
 
         .about-column-wrapper {
