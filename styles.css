@@ -314,7 +314,7 @@ body.light-mode {
         position:relative;
         overflow:hidden;
         z-index:1;
-        padding-bottom: 10vh;
+        padding-bottom: min(15vh,15vw);
     }
     
     .description-blocks{
